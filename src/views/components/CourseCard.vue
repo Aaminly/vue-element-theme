@@ -119,7 +119,6 @@ export default {
 
 <style lang="scss">
 .course-card-box {
-  background: url(../../assets/images/card.png) no-repeat;
   background-size: cover;
   &-print {
     font-size: 12px;
