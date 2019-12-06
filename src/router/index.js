@@ -75,7 +75,7 @@ export const constantRouterMap = [
 
 const createRouter = () =>
   new window.VueRouter({
-    mode: 'history', // require service support
+    mode: 'hash', // require service support
     scrollBehavior: () => ({ y: 0 }),
     routes: constantRouterMap
   })
