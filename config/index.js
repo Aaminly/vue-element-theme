@@ -60,7 +60,7 @@ module.exports = {
      * then assetsPublicPath should be set to "/bar/".
      * In most cases please use '/' !!!
      */
-    assetsPublicPath: '/vue-element-theme',
+    assetsPublicPath: '/vue-element-theme/',
 
     /**
      * Source Maps
