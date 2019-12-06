@@ -1,0 +1,567 @@
+body {
+  background: #f3f5f7;
+}
+.el-menu[role='menubar'] {
+  background: transparent !important;
+}
+.el-menu-item,
+.el-submenu__title {
+  height: 50px !important;
+  line-height: 50px !important;
+}
+
+@mixin left-bar(
+  // 默认导航栏文字颜色
+    $def-color,
+  // 选中导航栏文字颜色
+    $act-color,
+  // 选中导航栏文字背景
+    $act-bg,
+  // LOGO背景色
+    $logo-bg,
+  // LOGO英文字体颜色
+    $logo-en-color,
+  // LOGO中文字体颜色
+    $logo-color: $act-color,
+  // 导航栏背景颜色
+    $bg-color: transparent,
+  // 导航栏背景图片
+    $bg-img: transparent,
+  // 导航栏缩小后悬浮菜单背景图片
+    $menu-narrow-bg: transparent,
+  // 导航选中文字颜色
+    $nav-act-color: $act-color
+) {
+  #nprogress .bar,
+  .car-ball-box .inner {
+    background: $act-color;
+  }
+  .act-color {
+    color: $act-color;
+  }
+  .act-bg {
+    background: $act-color;
+  }
+  .act-border {
+    border-color: $act-color;
+  }
+  .el-select__caret,
+  *:not(.is-disabled) {
+    > .el-icon-arrow-up,
+    > .el-icon-arrow-down {
+      color: $act-color;
+    }
+  }
+  #app {
+    .el-backtop{
+      color: $act-color;
+      width: 20px;
+      border-radius: 8px;
+      right: 12px !important;
+    }
+    .el-input.is-focus .el-input__inner,
+    .el-table tr.current-row td {
+      border-color: $act-color;
+    }
+    .el-radio-button__orig-radio:disabled:checked + .el-radio-button__inner {
+      background-color: $act-color;
+      color: #fff;
+    }
+    .el-checkbox-button.is-checked .el-checkbox-button__inner{
+      background: $act-color;
+      color: #fff;
+    }
+    .theme-select li.actived {
+      img {
+        border: 3px solid $act-color;
+      }
+      span {
+        color: $act-color;
+      }
+    }
+    .tags-view-container .tags-view-wrapper .tags-view-item.active {
+      color: $act-color;
+      background: #f3f5f7;
+      &::before {
+        background: $act-color;
+      }
+    }
+    .sidebar-container {
+      background: $bg-color $bg-img;
+      .logo {
+        > a {
+          > div {
+            &:first-child {
+              background: $logo-bg;
+            }
+            &:last-child {
+              > p {
+                &:first-child {
+                  color: $logo-color;
+                }
+                &:last-child {
+                  color: $logo-en-color;
+                }
+              }
+            }
+          }
+        }
+      }
+      .el-menu {
+        z-index: 1002;
+        background-color: transparent !important;
+      }
+      .is-active {
+        &[tabindex='-1'] {
+          background-color: $act-bg;
+          border-left: 3px solid $act-color;
+        }
+        > .el-submenu__title {
+          color: $nav-act-color;
+        }
+      }
+    }
+    @content;
+    .student-info-box::before {
+      background: $act-color;
+    }
+    .class-info-box::before {
+      background: $act-color;
+    }
+    .sidebar-container .el-submenu .el-menu-item,
+    .el-submenu__title {
+      color: $def-color !important;
+      background-color: transparent !important;
+      &.is-active {
+        color: $nav-act-color;
+        background-color: $act-bg;
+      }
+    }
+  }
+  .el-submenu__title i {
+    color: $def-color !important;
+  }
+  .dashboard-income {
+    .num {
+      color: $act-color;
+    }
+  }
+  .el-menu--vertical .el-menu {
+    background: $menu-narrow-bg;
+    background-color: $bg-color !important;
+  }
+  .el-menu-item,
+  .el-submenu__title {
+    color: $def-color !important;
+    background-color: transparent !important;
+    &.is-active {
+      color: $act-color;
+      background-color: $act-bg;
+    }
+  }
+  .is-active {
+    > .el-submenu__title {
+      color: $act-color;
+    }
+  }
+  .el-tooltip__popper {
+    &.is-dark {
+      background: $act-color;
+    }
+    &[x-placement^='top'] .popper__arrow {
+      &,
+      &:after {
+        border-top-color: $act-color;
+      }
+    }
+    &[x-placement^='right'] .popper__arrow{
+      &,
+      &:after {
+        border-right-color: $act-color;
+      }
+    }
+  }
+}
+
+@mixin top-bar($nav-act-color, $nav-def-color: #a7a7a7) {
+  .el-breadcrumb__separator,
+  .el-breadcrumb__inner a,
+  .el-breadcrumb__inner.is-link {
+    font-weight: 100;
+    color: $nav-def-color !important;
+    font-weight: initial;
+  }
+  .no-redirect {
+    color: $nav-act-color;
+  }
+}
+.blackgold-theme {
+  $act-color: #c19b62 !important;
+  @include left-bar(
+    $bg-img: url(../assets/theme/blackgold-theme/images/slidebar-bg.png) repeat,
+    $menu-narrow-bg: url(../assets/theme/blackgold-theme/images/slidebar-bg.png)
+      repeat,
+    $def-color: #7c776d,
+    $act-color: $act-color,
+    $logo-bg: linear-gradient(to bottom right, #e4c384, #be9966),
+    $logo-en-color: #6d5734,
+    $bg-color: #1c1c1c,
+    $act-bg: #101010 !important
+  );
+  @include top-bar($nav-act-color: $act-color);
+  .logo svg {
+    color: #fff !important;
+  }
+  .el-progress-bar__inner {
+    background-color: #e4c384 !important;
+  }
+  .el-tabs__nav-wrap {
+    .el-tabs__active-bar {
+      background: $act-color;
+    }
+  }
+}
+
+.fox-theme {
+  $act-color: #fd753b !important;
+  @include left-bar(
+    $bg-img: url(../assets/theme/fox-theme/images/slidebar-bg.png) right bottom
+      no-repeat,
+    $menu-narrow-bg: url(../assets/theme/fox-theme/images/slidebar-bg.png)
+      repeat,
+    $def-color: #eab7a3,
+    $act-color: $act-color,
+    $logo-bg: #fff,
+    $logo-color: #fff,
+    $logo-en-color: #fff,
+    $bg-color: #fd753b,
+    $act-bg: #f3f5f7 !important
+  ) {
+    .main-container {
+      background: #f3f5f7 url(../assets/theme/fox-theme/images/bg.png) right top
+        no-repeat;
+      background-attachment: fixed;
+    }
+    .tags-view-container {
+      background: rgba(255, 255, 255, 0.5);
+    }
+    .navbar {
+      background: transparent !important;
+    }
+    .hideSidebar .sidebar-container .is-active > .el-submenu__title {
+      color: #fff !important;
+    }
+    .app-wrapper.openSidebar {
+      &::before {
+        content: '';
+        width: 34px;
+        height: 421px;
+        position: absolute;
+        bottom: 0;
+        left: 260px;
+        z-index: 1002;
+        background: url(../assets/theme/fox-theme/images/slidebar-bom-bg.png) -260px
+          top no-repeat;
+      }
+      .sidebar-container {
+        &::after {
+          content: '';
+          width: 294px;
+          height: 421px;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          z-index: 1001;
+          background: url(../assets/theme/fox-theme/images/slidebar-bom-bg.png)
+            no-repeat;
+        }
+        .is-active {
+          &[tabindex='-1'] {
+            border-left: 3px solid #5d90d1 !important;
+          }
+          > .el-submenu__title {
+            color: #fff !important;
+          }
+        }
+      }
+    }
+  }
+  .el-submenu.is-opened > .el-submenu__title i,
+  .is-active > .el-submenu__title {
+    color: #fff !important;
+  }
+  @include top-bar($nav-act-color: $act-color);
+  .panel-group {
+    > div {
+      &:first-child {
+        .el-progress-bar__inner {
+          background-color: #fea36e !important;
+        }
+        .num {
+          color: #fea36e !important;
+        }
+      }
+      &:nth-child(2) {
+        .el-progress-bar__inner {
+          background-color: #a48cfe !important;
+        }
+        .num {
+          color: #a48cfe !important;
+        }
+      }
+      &:nth-child(3) {
+        .el-progress-bar__inner {
+          background-color: #ff8f61 !important;
+        }
+        .num {
+          color: #ff8f61 !important;
+        }
+      }
+      &:last-child {
+        .el-progress-bar__inner {
+          background-color: #6689fd !important;
+        }
+        .num {
+          color: #6689fd !important;
+        }
+      }
+    }
+  }
+  .el-tabs__nav-wrap {
+    .el-tabs__active-bar {
+      background: $act-color;
+    }
+  }
+}
+
+.universe-theme {
+  $act-color: #38629c !important;
+  @include left-bar(
+    $menu-narrow-bg: url(../assets/theme/universe-theme/images/slidebar-bg.png)
+      right bottom no-repeat,
+    $def-color: #fff,
+    $act-color: $act-color,
+    $logo-bg: #fff,
+    $logo-color: #fff,
+    $logo-en-color: #fff,
+    $bg-color: #334b6d,
+    $act-bg: #f3f5f7 !important
+  ) {
+    .el-pager li.active {
+      color: #505050 !important;
+    }
+    .sidebar-container {
+      background: #334b6d !important;
+      &::after {
+        content: '';
+        width: 260px;
+        height: 421px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 1001;
+        background: url(../assets/theme/universe-theme/images/slidebar-bg.png)
+          right bottom no-repeat;
+        background-size: cover;
+      }
+      .is-active > .el-submenu__title {
+        color: #fff !important;
+      }
+    }
+  }
+  @include top-bar($nav-act-color: $act-color);
+}
+
+.naughtybear-theme {
+  $act-color: #36b2d4 !important;
+  @include left-bar(
+    $bg-img: url(../assets/theme/naughtybear-theme/images/bg.png) right bottom
+      no-repeat,
+    $menu-narrow-bg:
+      url(../assets/theme/naughtybear-theme/images/slidebar-bg.png) right bottom
+      no-repeat,
+    $def-color: #fff,
+    $act-color: $act-color,
+    $logo-bg: #fff,
+    $logo-color: #fff,
+    $logo-en-color: #fff,
+    $bg-color: #36b2d4,
+    $act-bg: #f3f5f7 !important
+  ) {
+    .sidebar-container {
+      background: $act-color;
+      &::after {
+        content: '';
+        width: 260px;
+        height: 421px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 1001;
+        background: url(../assets/theme/naughtybear-theme/images/slidebar-bg.png)
+          right bottom no-repeat;
+        background-size: cover;
+      }
+      .is-active > .el-submenu__title {
+        color: #fff !important;
+      }
+    }
+    .main-container {
+      background: #e9f3f5;
+      &:before {
+        content: '';
+        position: absolute;
+        z-index: 2;
+        right: 30%;
+        top: 6px;
+        width: 170px;
+        height: 90px;
+        background: url(../assets/theme/naughtybear-theme/images/bg.png)
+          no-repeat;
+        background-size: cover;
+      }
+    }
+  }
+  @include top-bar($nav-act-color: $act-color);
+}
+
+.peachblossom-theme {
+  $act-color: #f87595 !important;
+  @include left-bar(
+    $bg-img: url(../assets/theme/peachblossom-theme/images/slidebar-bg.png)
+      right bottom no-repeat,
+    $menu-narrow-bg:
+      url(../assets/theme/peachblossom-theme/images/slidebar-bg.png) right
+      bottom no-repeat,
+    $def-color: #e0b8b9,
+    $act-color: $act-color,
+    $logo-bg: #fff,
+    $logo-color: $act-color,
+    $logo-en-color: $act-color,
+    $bg-color: #faf1ec,
+    $act-bg: #fff !important
+  ) {
+    .main-container {
+      background: #f3f5f7 url(../assets/theme/peachblossom-theme/images/bg.png)
+        right top no-repeat;
+      background-attachment: fixed;
+    }
+  }
+  @include top-bar($nav-act-color: $act-color);
+}
+
+.minions-theme {
+  $act-color: #fed501 !important;
+  $fore-color: #7d4e30;
+  @include left-bar(
+    $bg-img: url(../assets/theme/minions-theme/images/slidebar-bg.png) right
+      bottom no-repeat,
+    $menu-narrow-bg: url(../assets/theme/minions-theme/images/slidebar-bg.png)
+      right bottom no-repeat,
+    $def-color: #ac961e,
+    $act-color: $fore-color !important,
+    $logo-bg: #fff,
+    $logo-color: $fore-color,
+    $logo-en-color: $fore-color,
+    $bg-color: #fed501,
+    $act-bg: #ffe76b !important
+  ) {
+    .main-container {
+      background: url(../assets/theme/minions-theme/images/bg.png) 80% top
+        no-repeat;
+      background-attachment: fixed;
+    }
+  }
+  @include top-bar($nav-act-color: $act-color);
+}
+
+.harvestjoy-theme {
+  $act-color: #fed501 !important;
+  $fore-color: #9d8151;
+  @include left-bar(
+    $bg-img: url(../assets/theme/harvestjoy-theme/images/slidebar-bg.png) right
+      bottom no-repeat,
+    $menu-narrow-bg:
+      url(../assets/theme/harvestjoy-theme/images/slidebar-bg.png) right bottom
+      no-repeat,
+    $def-color: #c1a985,
+    $act-color: $fore-color !important,
+    $logo-bg: #fff,
+    $logo-color: $fore-color,
+    $logo-en-color: $fore-color,
+    $bg-color: #f2d6a6,
+    $act-bg: #f7dfb9 !important
+  );
+  @include top-bar($nav-act-color: $act-color);
+}
+
+.thebigblue-theme {
+  $act-color: #2f8970 !important;
+  $fore-color: #fff;
+  @include left-bar(
+    $bg-img: url(../assets/theme/thebigblue-theme/images/slidebar-bg.png) right
+      bottom no-repeat,
+    $menu-narrow-bg:
+      url(../assets/theme/thebigblue-theme/images/slidebar-bg.png) right bottom
+      no-repeat,
+    $def-color: #94e7cd,
+    $act-color: #2f8970 !important,
+    $logo-bg: #fff,
+    $logo-color: $fore-color,
+    $logo-en-color: $fore-color,
+    $bg-color: #27b689,
+    $act-bg: #73e1be !important,
+    $nav-act-color: $fore-color !important
+  )
+  @include top-bar($nav-act-color: $act-color);
+}
+
+.soot-theme {
+  $act-color: #9d8151 !important;
+  $fore-color: #9d8152;
+  @include left-bar(
+    $bg-img: url(../assets/theme/soot-theme/images/slidebar-bg.png) right bottom
+      no-repeat,
+    $menu-narrow-bg: url(../assets/theme/soot-theme/images/slidebar-bg.png)
+      right bottom no-repeat,
+    $def-color: #cabda8,
+    $act-color: $fore-color !important,
+    $logo-bg: #fff,
+    $logo-color: $fore-color,
+    $logo-en-color: $fore-color,
+    $bg-color: #eaebef,
+    $act-bg: #f3f3f3 !important
+  ) {
+    .main-container {
+      background: #f3f3f3;
+    }
+  }
+  @include top-bar($nav-act-color: $act-color);
+}
+
+.maidenheart-theme {
+  $act-color: #ee6f9c !important;
+  $fore-color: #ee6f9d;
+  @include left-bar(
+    $bg-img: url(../assets/theme/maidenheart-theme/images/slidebar-bg.png) right
+      bottom no-repeat,
+    $menu-narrow-bg:
+      url(../assets/theme/maidenheart-theme/images/slidebar-bg.png) right bottom
+      no-repeat,
+    $def-color: #f7aecc,
+    $act-color: $fore-color !important,
+    $logo-bg: #fff,
+    $logo-color: $fore-color,
+    $logo-en-color: $fore-color,
+    $bg-color: #daeef9,
+    $act-bg: rgba(#fff, 0.6) !important
+  ) {
+    .main-container {
+      background: #dbedf9 url(../assets/theme/maidenheart-theme/images/bg.png)
+        right top no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+  }
+  @include top-bar($nav-act-color: $act-color);
+}

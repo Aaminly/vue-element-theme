@@ -1,0 +1,531 @@
+@import './variables.scss';
+@import './mixin.scss';
+@import './transition.scss';
+@import './element-ui.scss';
+@import './sidebar.scss';
+@import './btn.scss';
+@import './theme.scss';
+@import './dialog.scss';
+@import './uploadImg.scss';
+
+
+
+@font-face {
+  font-family: 'HelveticaNeueLTPro';
+  src: url('../assets/font/HelveticaNeueLTPro-ThEx.ttf');
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #ddd;
+}
+
+::-webkit-scrollbar-track{
+  background-color: rgba(218,223,230,.3);
+  border-radius: 10px;
+}
+
+body {
+  height: 100%;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
+label {
+  font-weight: 700;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.padding-content {
+  padding: 4px 0;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+div:focus {
+  outline: none;
+}
+
+.fr {
+  float: right;
+}
+
+.fl {
+  float: left;
+}
+
+.pr-5 {
+  padding-right: 5px;
+}
+
+.pl-5 {
+  padding-left: 5px;
+}
+
+.mt-0{
+  margin-top: 0;
+}
+
+.mb-10 {
+  margin-bottom: 10px !important;
+}
+
+.block {
+  display: block;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.option-txt {
+  color: #8492a6;
+  font-size: 13px;
+}
+
+.inlineBlock {
+  display: block;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: ' ';
+    clear: both;
+    height: 0;
+  }
+}
+
+code {
+  background: #eef1f6;
+  padding: 15px 16px;
+  margin-bottom: 20px;
+  display: block;
+  line-height: 36px;
+  font-size: 15px;
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  a {
+    color: #337ab7;
+    cursor: pointer;
+    &:hover {
+      color: rgb(32, 160, 255);
+    }
+  }
+}
+
+.no-show{
+  &:after{
+    content: "当前统计不显示此数据";
+    position: absolute;
+    top: 70px;
+    left: 50%;
+    margin-left: -70px;
+  }
+  .no-show-box{
+    filter: blur(5px);
+    transition: filter .2s;
+  }
+}
+
+@keyframes waveFlow {
+  from { background-position-x: -10px, 0; }
+  to { background-position-x: -30px, -20px; }
+}
+
+.line-anima {
+  background: radial-gradient(circle at 10px -7px, transparent 8px, currentColor 8px, currentColor 9px, transparent 9px) repeat-x,
+      radial-gradient(circle at 10px 27px, transparent 8px, currentColor 8px, currentColor 9px, transparent 9px) repeat-x;
+  background-size: 20px 20px;
+  background-position: -10px calc(100% + 16px), 0 calc(100% - 4px);
+  animation: waveFlow 1s infinite linear;
+}
+.warn-content {
+  background: rgba(66, 185, 131, 0.1);
+  border-radius: 2px;
+  padding: 16px;
+  padding: 1rem;
+  line-height: 1.6rem;
+  word-spacing: 0.05rem;
+  a {
+    color: #42b983;
+    font-weight: 600;
+  }
+}
+
+//main-container全局样式
+.app-container {
+  padding: 20px;
+}
+
+.components-container {
+  margin: 30px 50px;
+  position: relative;
+}
+
+.pagination-container {
+  margin-top: 30px;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  &.center {
+    justify-content: center;
+  }
+  &.right{
+    justify-content: flex-end;
+  }
+  &.between {
+    justify-content: space-between;
+  }
+  &.around {
+    justify-content: space-around;
+  }
+  &.equally > *{
+    flex: 1;
+    &:not(:last-child){
+      padding-right: 10px;
+    }
+  }
+  &.last-color > span:last-child {
+    color: #8492a6;
+  }
+}
+
+.multi-line > div{
+  white-space: inherit !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.is-empty {
+  font-size: 14px;
+  color: #a2a2a2;
+}
+
+.sub-navbar {
+  height: 50px;
+  line-height: 50px;
+  position: relative;
+  width: 100%;
+  text-align: right;
+  padding-right: 20px;
+  transition: 600ms ease position;
+  background: linear-gradient(
+    90deg,
+    rgba(32, 182, 249, 1) 0%,
+    rgba(32, 182, 249, 1) 0%,
+    rgba(33, 120, 241, 1) 100%,
+    rgba(33, 120, 241, 1) 100%
+  );
+  .subtitle {
+    font-size: 20px;
+    color: #fff;
+  }
+  &.draft {
+    background: #d0d0d0;
+  }
+  &.deleted {
+    background: #d0d0d0;
+  }
+}
+
+.link-type,
+.link-type:focus {
+  color: #337ab7;
+  cursor: pointer;
+  &:hover {
+    color: rgb(32, 160, 255);
+  }
+}
+
+.filter-container {
+  padding-bottom: 10px;
+  .filter-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 10px;
+  }
+}
+
+//refine vue-multiselect plugin
+.multiselect {
+  line-height: 16px;
+}
+
+.multiselect--active {
+  z-index: 1000 !important;
+}
+
+// price font
+.price-font {
+  letter-spacing: 1px;
+  font-family: HelveticaNeueLTPro;
+  font-weight: 700;
+}
+$inp-bg: rgba(#fff, 0.8) !important;
+.select-tools {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  > div {
+    display: flex;
+    flex-wrap: wrap;
+    &:last-child{
+      justify-content: flex-end;
+    }
+    &:only-child{
+      justify-content: flex-start;
+    }
+    > div {
+      display: flex;
+      align-items: center;
+      min-height: 32px;
+      margin: 0 10px 10px 0;
+      color: #5a5e66;
+      font-size: 13px;
+      > .tips{
+        width: 103px;
+        line-height: 32px;
+        background: #f5f7fa;
+        padding-left: 10px;
+      }
+      .el-date-editor:not(.is-active) {
+        background: $inp-bg;
+        input {
+          background: $inp-bg;
+        }
+      }
+      .el-date-editor--daterange {
+        border: 1px solid #ebebeb;
+      }
+      .el-input-number{
+        width: 81px;
+        .el-input {
+          width: auto;
+          .el-input__inner{
+            padding: 0 35px 0 5px !important;
+          }
+        }
+      }
+      .el-select,
+      .el-input {
+        width: 184px;
+        input {
+          &:not(:focus) {
+            border: 1px solid #ebebeb;
+            background: $inp-bg;
+          }
+        }
+      }
+    }
+    &.btn {
+      justify-content: flex-end;
+      margin-right: -10px;
+      &:first-child:last-child {
+        width: calc(100% + 22px);
+      }
+    }
+  }
+}
+
+.inline {
+  display: flex;
+  align-items: flex-start;
+  > div:not(:first-child) {
+    margin-left: 10px;
+  }
+}
+
+.bor-tit {
+  position: relative;
+  padding-left: 5px;
+  span {
+    position: relative;
+    z-index: 2;
+  }
+  .act-bg {
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 8px;
+    width: 86px;
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+}
+
+.arrow-list-box {
+  display: flex;
+  justify-content: space-between;
+  padding: 7px 7px 0;
+  flex-wrap: wrap;
+  > div {
+    background: #f8f8f8;
+    flex: 1;
+    min-width: 162px;
+    height: 87px;
+    position: relative;
+    padding: 0 0 0 14px;
+    margin: 0 7px 7px 0;
+    box-sizing: border-box;
+    // filter: drop-shadow(0 0 10px #ccc);
+    border-bottom: 1px solid #f8f8f8;
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -7px;
+      border-left: 7px solid #f8f8f8;
+      border-top: 44px solid transparent !important;
+      border-bottom: 44px solid transparent !important;
+      border-right: none;
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-top: 44px solid transparent !important;
+      border-bottom: 44px solid transparent !important;
+      border-left: 7px solid rgba(255, 255, 255, 0.65);
+      border-right: none;
+    }
+    h5 {
+      color: #444;
+      font-size: 15px;
+      margin: 20px 0 10px;
+      position: relative;
+      padding-left: 20px;
+      &::before {
+        content: '●';
+        font-size: 20px;
+        font-weight: bold;
+        position: absolute;
+        left: 0;
+        top: 0;
+        line-height: 16px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+// checkbox--check
+.el-checkbox-button--check {
+  margin-bottom: 10px;
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+  & > .el-checkbox-button__inner {
+    padding: 8px 15px 9px !important;
+    border-radius: 4px !important;
+    border: 1px solid #d8dce5 !important;
+  }
+  &.is-checked {
+    & > .el-checkbox-button__inner {
+      box-shadow: none !important;
+      position: relative;
+      &:after {
+        content: '\2714';
+        position: absolute;
+        top: 1%;
+        right: 0;
+        color: #fff;
+      }
+    }
+  }
+}
+// 导出
+.export-file {
+  .el-progress {
+    display: flex;
+    &-bar {
+      margin: 0;
+      padding: 0;
+    }
+    &__text {
+      font-size: 15px !important;
+      margin-right: -20px;
+    }
+  }
+  .el-notification__group {
+    width: 100%;
+  }
+}
+
+// weeklist and timelist
+.checkbox-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  .time-list,
+  .class-list {
+    padding-left: 15px;
+    border-right: 1px solid #ebebeb;
+    > label:last-child {
+      margin: 0;
+    }
+  }
+  .week-list {
+    width: 315px;
+    border-right: 1px solid #ebebeb;
+    label {
+      margin: 0;
+      &:nth-child(5) {
+        margin: 0;
+      }
+    }
+  }
+  .time-list {
+    width: 165px;
+    label {
+      margin: 0;
+    }
+  }
+  .class-list {
+    width: 125px;
+    label {
+      margin: 0;
+    }
+  }
+}

@@ -1,0 +1,8 @@
+.dialog-footer{
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  & > .el-button{
+    min-width: 20%;
+  }
+}
