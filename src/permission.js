@@ -30,11 +30,8 @@ const whiteList = ['/login', '/auth-redirect', '/upload'] // no redirect whiteli
 
 router.beforeEach((to, from, next) => {
   NProgress.start() // start progress bar
-  store.dispatch('generateRoutes', { }).then(() => {
-    // 根据menu id生成可访问的路由表
-    router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
-    next({ ...to, replace: true }) // hack方法 确保addRoutes已完成 ,set the replace: true so the navigation will not leave a history record
-  })
+  router.addRoutes(store.getters.addRouters) // 动态添加可访问路由表
+  next({ ...to, replace: true })
   if (getToken()) {
     // determine if there has token
     /* has token*/

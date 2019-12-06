@@ -51,7 +51,7 @@ module.exports = {
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
-    assetsSubDirectory: 'dist/static',
+    assetsSubDirectory: 'static',
 
     /**
      * You can set by youself according to actual condition
@@ -60,7 +60,7 @@ module.exports = {
      * then assetsPublicPath should be set to "/bar/".
      * In most cases please use '/' !!!
      */
-    assetsPublicPath: '/vue-element-theme/',
+    assetsPublicPath: '/vue-element-theme/dist/',
 
     /**
      * Source Maps
